@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(params.require(:reservation).permit(:content, :room_id, :start_date, :end_date, :people))
+    @reservation = Reservation.new(params.require(:reservation).permit(:content, :room_id, :start_date, :end_date, :people, :room_img, :room_name, :room_introduction, :room_fee))
         if @reservation.save
           flash[:notice] = "予約が完了しました"
           redirect_to :reservations
@@ -22,4 +22,5 @@ class ReservationsController < ApplicationController
   def show
     @reservation = Reservation.find(params[:id])
   end
+
 end
